@@ -1,9 +1,10 @@
-﻿using System.Text.Json;
+﻿using MorseCodeTranslator.Interfaces;
+using System.Text.Json;
 
 namespace MorseCodeTranslator.Services
 {
     // Initialization services for loading the encoding Dictionary and decoding binary tree
-    internal class DataInitializationService
+    internal class DataInitializationService : IDataInitializationService
     {
         // This string should not be changed after initialization
         private readonly string _morseMappingString;
@@ -13,7 +14,7 @@ namespace MorseCodeTranslator.Services
         {
             // Get relative path to morse_code_mapping.json for most OS types
             var pathToMorseMappingJson = Path.Combine(AppContext.BaseDirectory, "Data", "morse_code_mapping.json");
-            // Read morse_come_mapping.json to a string
+            // Read morse_code_mapping.json to a string
             _morseMappingString = File.ReadAllText(pathToMorseMappingJson);
         }
 
